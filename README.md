@@ -1,11 +1,59 @@
 # Build Android for Raspberry Pi3
-## Getting Started
----------------
-To get started with building Android from source, you'll need to get familiar with [Establishing a build environment](http://source.android.com/source/initializing.html).
+本文引用了https://github.com/android-rpi 和 https://github.com/tab-pi ，
+根据这两个项目的指引说明，结合国内资源下载，在这两个项目的基础上进行了适当改动。
 
-## Sync Android Source (AOSP)
- * $ repo init -u https://github.com/tab-pi/platform_manifest -b nougat
- * $ repo sync
+# 树莓派3 android7.1-tv 源码编译
+## 下载和编译环境配置
+- 第一步，下载repo
+```
+git clone https://gerrit-google.tuna.tsinghua.edu.cn/git-repo
+```
+
+然后将git-repo目录下的repo加入到环境变量
+```
+vim ~/.bashrc
+最后一行加入
+export PATH="~/git-repo:$PATH"
+保存，然后重载环境变量
+. ~/.bashrc
+```
+
+- 第二步，下载源码
+这里，源代码的来源，共来自三个地方，AOSP 部分，来自中国科学技术大
+学（详细：https://lug.ustc.edu.cn/wiki/mirrors/help/aosp），
+树莓派android内核和系统修改，共引用自 https://github.com/android-rpi 和  https://github.com/tab-pi，
+下载：
+
+```
+$ mkdir AOSP-work
+$ cd AOSP-work 
+$ repo init -u https://github.com/jzzhrqp/platform_manifest -b nougat
+$ repo sync
+```
+
+- 第三步，配置编译环境
+关于编译环境的配置，详细的介绍请看谷歌公司在中国的AOSP网站(https://source.android.google.cn/setup/initializing)
+
+先，安装下面这三样：
+Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
+GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
+Git 1.7或更新从git-scm.com(https://git-scm.com/download)
+
+然后：
+1，安装openjdk 8
+'''
+$ sudo apt-get update
+$ sudo apt-get install openjdk-8-jdk
+'''
+
+
+2，安装所需的软件包
+```
+sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g ++  -  multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa- dev libxml2-utils xsltproc unzip
+```
+
+-------------------------
+当一切都准备好了，接下来就按照 下面的说明开始编译吧。
 
 ## Build Kernel
  * Install gcc-arm-linux-gnueabihf (For Ubuntu: $ sudo apt install gcc-arm-linux-gnueabihf)
