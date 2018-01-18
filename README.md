@@ -35,11 +35,13 @@ $ repo sync
 关于编译环境的配置，详细的介绍请看谷歌公司在中国的AOSP网站(https://source.android.google.cn/setup/initializing)
 
 先，安装下面这三样：
-Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
-GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
-Git 1.7或更新从git-scm.com(https://git-scm.com/download)
+
+-- Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
+-- GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
+-- Git 1.7或更新从git-scm.com(https://git-scm.com/download)
 
 然后：
+
 1，安装openjdk 8
 '''
 $ sudo apt-get update
