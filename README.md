@@ -22,14 +22,13 @@ export PATH="~/git-repo:$PATH"
 这里，源代码的来源，共来自三个地方，AOSP 部分，来自中国科学技术大
 学（详细：https://lug.ustc.edu.cn/wiki/mirrors/help/aosp），
 树莓派android内核和系统修改，共引用自 https://github.com/android-rpi 和  https://github.com/tab-pi，
-
-
+下载源代码的前提是你能用ssh联接到github.
 下载：
 
 ```
 $ mkdir AOSP-work
 $ cd AOSP-work 
-$ repo init -u git://github.com/jzzhrqp/platform_manifest -b nougat
+$ repo init -u ssh://github.com/jzzhrqp/platform_manifest -b nougat
 $ repo sync
 ```
 
@@ -38,26 +37,50 @@ $ repo sync
 
 先，安装下面这三样：
 
-  -> Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
-  -> GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
-  -> Git 1.7或更新从git-scm.com(https://git-scm.com/download)
+-> Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
+-> GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
+-> Git 1.7或更新从git-scm.com(https://git-scm.com/download)
 
 然后：
 
-1，安装openjdk 8
+1. 安装openjdk 8
 '''
 $ sudo apt-get update
 $ sudo apt-get install openjdk-8-jdk
 '''
 
 
-2，安装所需的软件包
+2. 安装所需的软件包
 ```
 sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g ++  -  multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa- dev libxml2-utils xsltproc unzip
 ```
 
+3. 配置环境变量
+
+高度并行的构建过程可能会超出此限制。
+要增加上限，请将以下几行添加到您的~/.bashrc：
+```
+＃设置打开文件的数量为1024 
+ulimit -S -n 1024
+```
+
+设置ccache
+您可以选择告诉构建使用ccache编译工具，它是C和C ++的编译器缓存，可以帮助构建更快。这对构建服务器和其他大批量生产环境特别有用。Ccache充当一个编译器缓存，可以用来加速重建。如果make clean经常使用，或者经常在不同的构建产品之间进行切换，这种方法效果很好。
+要使用ccache，请在源代码树的根目录中输入以下命令：
+```
+export USE_CCACHE=1
+export CCACHE_DIR=/<path_of_your_choice>/.ccache
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
+```
+把下面这一行加入~/.bashrc：
+```
+export USE_CCACHE=1
+```
+
+
 -------------------------
-当一切都准备好了，接下来就按照 下面的说明开始编译吧。
+
+当一切都准备好了，接下来就按照下面的说明开始编译吧。
 
 
 ## Build Kernel
