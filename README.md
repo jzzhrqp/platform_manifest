@@ -22,12 +22,14 @@ export PATH="~/git-repo:$PATH"
 这里，源代码的来源，共来自三个地方，AOSP 部分，来自中国科学技术大
 学（详细：https://lug.ustc.edu.cn/wiki/mirrors/help/aosp），
 树莓派android内核和系统修改，共引用自 https://github.com/android-rpi 和  https://github.com/tab-pi，
+
+
 下载：
 
 ```
 $ mkdir AOSP-work
 $ cd AOSP-work 
-$ repo init -u https://github.com/jzzhrqp/platform_manifest -b nougat
+$ repo init -u git://github.com/jzzhrqp/platform_manifest -b nougat
 $ repo sync
 ```
 
