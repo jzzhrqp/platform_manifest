@@ -36,9 +36,9 @@ $ repo sync
 
 先，安装下面这三样：
 
--- Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
--- GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
--- Git 1.7或更新从git-scm.com(https://git-scm.com/download)
+  -> Python 2.6 - 2.7从python.orghttps://www.python.org/downloads/()
+  -> GNU Make 3.81 - 3.82来自gnu.org(http://ftp.gnu.org/gnu/make/)
+  -> Git 1.7或更新从git-scm.com(https://git-scm.com/download)
 
 然后：
 
@@ -56,6 +56,7 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 
 -------------------------
 当一切都准备好了，接下来就按照 下面的说明开始编译吧。
+
 
 ## Build Kernel
  * Install gcc-arm-linux-gnueabihf (For Ubuntu: $ sudo apt install gcc-arm-linux-gnueabihf)
