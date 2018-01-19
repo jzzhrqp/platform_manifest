@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="arpi" fetch="https://github.com/android-rpi"/>
+  <remote name="arpi" fetch="git://github.com/android-rpi"/>
 
-  <remote name="tab-pi" fetch="https://github.com/tab-pi"/>
+  <remote name="tab-pi" fetch="git://github.com/tab-pi"/>
 
   <remote name="private"
            fetch="ssh://git@github.com" />
